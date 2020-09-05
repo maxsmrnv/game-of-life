@@ -1,0 +1,16 @@
+.btn {
+  border: 0.5px solid #000000;
+  box-sizing: border-box;
+  margin: 8px;
+  padding: 7px 20px;
+  background-color: #fff;
+  font-size: 13px;
+  line-height: 15px;
+  height: 40px;
+  width: 140px;
+  cursor: pointer;
+
+  &:disabled {
+    border: 0.5px solid rgb(170, 170, 170);
+  }
+}

@@ -1,0 +1,9 @@
+.container {
+  min-width: 20px;
+  min-height: 20px;
+  background-color: lightgrey;
+  cursor: pointer;
+  &__live {
+    background-color: grey;
+  }
+}
