@@ -1,0 +1,16 @@
+.container {
+  height: 100%;
+  width: 100%;
+
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__row {
+    display: grid;
+    column-gap: 5px;
+    margin-bottom: 5px;
+    grid-auto-flow: column;
+  }
+}

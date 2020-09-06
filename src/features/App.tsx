@@ -1,7 +1,7 @@
-import React, { useState, ChangeEvent, useEffect } from 'react';
+import React, { useState, ChangeEvent, useEffect, useCallback } from 'react';
 
-import styles from './styles.scss';
-import { Grid } from './Grid';
+import styles from './App.scss';
+import { Grid } from './Grid/Grid';
 import { useInterval } from '../hooks/useInterval';
 import { Button } from '../components/Button/Button';
 import { loadPreset, presets } from './presets';
@@ -13,7 +13,8 @@ export const App: React.FC = () => {
   const [populationHistory, setHistory] = useState<number[][][]>([]);
 
   const handleCellClick = (x: number, y: number) => {
-    const newGrid = [...grid];
+    // make deep copy
+    const newGrid = grid.map((row) => [...row]);
     newGrid[y][x] = 1 - grid[y][x];
     setGrid(newGrid);
   };
@@ -71,11 +72,11 @@ export const App: React.FC = () => {
     }
   };
 
-  const handleReset = () => {
+  const handleReset = useCallback(() => {
     setIsRunning(false);
     setHistory([]);
     setGrid(defaultGrid);
-  };
+  }, []);
 
   const handleSelect = (e: ChangeEvent<HTMLSelectElement>) => {
     const newPreset = e.target.value as keyof typeof presets;

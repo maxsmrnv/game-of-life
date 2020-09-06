@@ -1,9 +1,11 @@
 import React from 'react';
 
-import styles from './styles.scss';
-import { Cell } from '../components/Cell/Cell';
+import styles from './Grid.scss';
+import { Cell } from '../../components/Cell/Cell';
 
-export const Grid: React.FC<{ grid: number[][]; onCell: (x: number, y: number) => void }> = ({ grid, onCell }) => {
+type TGrid = { grid: number[][]; onCell: (x: number, y: number) => void };
+
+export const Grid: React.FC<TGrid> = ({ grid, onCell }) => {
   const handleClick = (e: React.SyntheticEvent<HTMLDivElement>) => {
     if (!(e.target instanceof HTMLDivElement)) {
       return;
@@ -17,9 +19,9 @@ export const Grid: React.FC<{ grid: number[][]; onCell: (x: number, y: number) =
   };
 
   return (
-    <div className={styles.grid} onClick={handleClick}>
+    <div className={styles.container} onClick={handleClick}>
       {grid.map((rows, rowIdx) => (
-        <div className={styles.grid__row} key={rowIdx}>
+        <div className={styles.container__row} key={rowIdx}>
           {rows.map((col, colIdx) => (
             <Cell key={colIdx} row={rowIdx} col={colIdx} isLive={Boolean(col)} />
           ))}

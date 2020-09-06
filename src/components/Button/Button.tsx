@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Button.scss';
-export const Button: React.FunctionComponent<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
+const ButtonComponent: React.FunctionComponent<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
   children,
   ...props
 }) => {
@@ -10,3 +10,5 @@ export const Button: React.FunctionComponent<React.ButtonHTMLAttributes<HTMLButt
     </button>
   );
 };
+
+export const Button = React.memo(ButtonComponent);
